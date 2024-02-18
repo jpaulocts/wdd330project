@@ -1,4 +1,4 @@
-import{g as c,s as n,a as r,t as d,l as o,b as l}from"./utils-CWMTnRNg.js";import{E as p}from"./ExternalServices-Dv5AZ21x.js";function u(e,t){const i=h(e);return`<section class="product-detail"> <h3>Meal type: ${e.recipe.mealType}</h3>
+import{g as c,s as n,a as r,t as d,l as o,b as l}from"./utils-DuOzCFNK.js";import{E as p}from"./ExternalServices-Dv5AZ21x.js";function u(e,t){const i=h(e);return`<section class="product-detail"> <h3>Meal type: ${e.recipe.mealType}</h3>
     <h2 class="divider">${e.recipe.label}</h2>
     <img
       class="divider"

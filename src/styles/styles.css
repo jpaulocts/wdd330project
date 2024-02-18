@@ -144,7 +144,7 @@ button:hover {
   border-radius: 90px;
   font-size: 15px;
   padding: 3px;
-  display: "none";
+  display: none;
 }
 
 .cart-quantity.animating {
