@@ -1,0 +1,1 @@
+import{l as e,b as t}from"./utils-DS4vTEgP.js";import{E as o}from"./ExternalServices-Dv5AZ21x.js";import{P as r}from"./ProductList-BJMuNnwB.js";e();const s=t("mealType"),a=new o,c=document.querySelector(".product-list"),m=new r(s,a,c);m.init();

@@ -14,7 +14,6 @@ export default defineConfig({
         recipe: resolve(__dirname, "src/recipe_page/index.html"),
         listing: resolve(__dirname, "src/recipe-listing/index.html"),
       },
-      
     },
   },
 });

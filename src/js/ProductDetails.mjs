@@ -66,16 +66,26 @@ export default class ProductDetails {
       .addEventListener("click", this.addToCart.bind(this));
   }
   addToCart() {
-    this.addProduct(this.product);
-    // const currentCart = getLocalStorage("so-cart") || [];
-    // currentCart.push(this.product);
-    // setLocalStorage("so-cart", currentCart);
-   
-    alertMessage(`${this.product.NameWithoutBrand} added to cart!`);
-    totalQuantity()
+    
+    const currentCart = getLocalStorage("so-cart") || [];
+    const recipe = this.product.recipe.label;
+    const cartAmount = document.querySelector(".cart-quantity");
+     if (!currentCart.some(item=>item.recipe.label === recipe)){
+     currentCart.push(this.product);
+     setLocalStorage("so-cart", currentCart);
+     alertMessage(`${recipe} added to favorites recipes!`);
+     totalQuantity();
+     cartAmount.classList.add("animating");
+    /* totalQuantity() */
+     } else {
+      alertMessage(`${recipe} has already added to favorites recipes! Please, choose another one.`);
+     }
 
+    cartAmount.addEventListener("anmationend", function () {
+      this.classList.remove("animating");
+    } ) 
   }
-  addProduct(product){
+  /* addProduct(product){
     this.productArray = getLocalStorage("so-cart") || [];
     let currentItem = this.productArray.findIndex((item) => item.Id === product.Id);
     
@@ -99,7 +109,7 @@ export default class ProductDetails {
   setLocalStorage("so-cart", this.productArray);
   totalQuantity()
 
-  }
+  } */
 
 
   renderProductDetails(selector) {

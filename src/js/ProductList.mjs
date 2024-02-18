@@ -2,16 +2,10 @@ import { renderListWithTemplate } from "./utils.mjs";
 
 export function productCardTemplate(product){
 
-    const recipeLink = product._links.self.href;
-
-    const startIndex = recipeLink.indexOf("v2") + 3;
-    
-    const endIndex = recipeLink.indexOf("?");
-
-    const id = recipeLink.substring(startIndex,endIndex);
+    const idlist = id(product);
 
     return `<li class="product-card">
-    <a href="/recipe_page/index.html?recipe=${id}">
+    <a href="/recipe_page/index.html?recipe=${idlist}">
       <img src="${product.recipe.image}" alt="Image of ${product.recipe.label}">
       <h2 class="card__name">${product.recipe.label}</h2>
       <h3 class="card__brand" >Cuisine Type:${product.recipe.cuisineType}</h3>
@@ -48,6 +42,18 @@ function capitalize(str) {
     return str.slice(0, 1).toUpperCase() + str.slice(1);
   }
 
+  export function id(product) {
+
+    const recipeLink = product._links.self.href;
+
+    const startIndex = recipeLink.indexOf("v2") + 3;
+    
+    const endIndex = recipeLink.indexOf("?");
+
+    const id = recipeLink.substring(startIndex,endIndex);
+
+    return id;
+  }
 
 
     

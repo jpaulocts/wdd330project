@@ -61,12 +61,14 @@ export function removeAllAlerts() {
 
 export function totalQuantity (){      
   const array = getLocalStorage("so-cart");
-  const cartAmount = document.getElementById("cart-quantity");
-  if (array) {
-      cartAmount.textContent = array.map((x) => x.quantity).reduce((x, y) => x + y, 0); 
+  const cartAmount = document.querySelector(".cart-quantity");
+  if (array.length>0) {
+      cartAmount.textContent = array.length; 
+      cartAmount.style.display = "inline-block";
   } else {
-      cartAmount.textContent = 0;
+      cartAmount.style.display = "none";
   }
+
 }
 
 
@@ -93,5 +95,7 @@ export async function loadHeaderFooter() {
 
   renderWithTemplate(headerTemplate, headerElement)
   renderWithTemplate(footerTemplate, footerElement);
+  totalQuantity()
   
 }
+
