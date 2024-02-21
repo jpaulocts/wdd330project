@@ -99,5 +99,41 @@ export async function loadHeaderFooter() {
   
 }
 
+export function bmi(mass, height){
+
+  return mass/(height**2);
+}
+
+
+export function errorForm(position="afterbegin"){
+
+// Selecione o formulário pelo seu ID (substitua "myForm" pelo ID real do seu formulário)
+const form = document.forms.checkout;
+
+// Pegue todos os elementos input do formulário
+const inputElements = form.querySelectorAll("input");
+
+// Para cada elemento input, associe o evento "input" e adicione um elemento <span> para mostrar mensagens de erro
+inputElements.forEach(inputElement => {
+  // Crie um elemento <span> para mostrar mensagens de erro
+  const errorSpan = document.createElement("span");
+  errorSpan.className = "error-active"; // Adicione uma classe para estilização
+  inputElement.insertAdjacentHTML(position, errorSpan); // Insira o elemento <span> após o input
+
+  inputElement.addEventListener("input", () => {
+    // Aqui você pode adicionar sua lógica de validação para cada input
+    if (inputElement.validity.valid) {
+      // Se o campo for válido, remova qualquer mensagem de erro
+      errorSpan.textContent = ""; // Limpe o conteúdo do span
+      errorSpan.classList.remove("active"); // Remova a classe "active" para esconder o span
+    } else {
+      // Se houver um erro, mostre a mensagem de erro apropriada
+      errorSpan.textContent = "Preenchimento inválido"; // Defina a mensagem de erro
+      errorSpan.classList.add("active"); // Adicione a classe "active" para mostrar o span
+    }
+  });
+});
+
+}
 
 

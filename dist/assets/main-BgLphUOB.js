@@ -1,1 +1,0 @@
-import{l as c}from"./utils-DuOzCFNK.js";function s(){const o=document.getElementById("hero-main");o&&window.addEventListener("scroll",function(){const n=window.scrollY,e=window.innerHeight,i=o.offsetHeight,r=o.offsetTop;let t=1-(n-r+e)/(i+e);t=Math.min(Math.max(t,0),1),o.style.opacity=t.toFixed(2)})}c();s();

@@ -1,4 +1,5 @@
 const baseURL = "https://api.edamam.com/api/recipes/v2?type=public&app_id=56dbbebe&app_key=%20ee5ca6def606b1f208c6d03cb0929fa6&diet=balanced"
+const SERVER_URL = "https://wdd330-backend.onrender.com/"
 
 async function convertToJson(res) {
   const data = await res.json();
@@ -35,6 +36,6 @@ export default class ExternalServices {
       },
       body: JSON.stringify(payload),
     };
-    return await fetch(baseURL + "checkout/", options).then(convertToJson);
+    return await fetch(SERVER_URL + "checkout/", options).then(convertToJson);
   }
 }

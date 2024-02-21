@@ -8,10 +8,9 @@
 
     <title>RecipeHub | Plan Review</title>
 
-    <script type="module" crossorigin src="/assets/checkout-B5ewDghw.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/utils-DuOzCFNK.js">
-    <link rel="modulepreload" crossorigin href="/assets/ExternalServices-Dv5AZ21x.js">
-    <link rel="stylesheet" crossorigin href="/assets/utils-BLivvDRg.css">
+    <script type="module" crossorigin src="/assets/checkout-41QfNkBz.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/utils-CbGXeFri.js">
+    <link rel="stylesheet" crossorigin href="/assets/utils-BxMw1YfD.css">
   </head>
 
   <body>
@@ -19,54 +18,54 @@
     <main class="divider checkout">
       <h2>Review & Confirm your Plan</h2>
       <section class="checkout-form">
-        <form name="checkout">
+        <form novalidate name="checkout">
           <fieldset>
             <legend>Personal information</legend>
             <div class="checkout__name">
               <label for="fname">First Name</label>
-              <input name="fname" required />
+              <input name="fname" pattern ="[A-Za-z]+"  required />
               <label for="lname">Last Name</label>
-              <input name="lname" required />
+              <input name="lname" pattern ="[A-Za-z]+" required />
             </div>
             <div class="checkout__address">
-              <label for="street">Street</label>
-              <input name="street" required />
+              <label for="street">Email</label>
+              <input type="email" name="email" placeholder="example@example.com" required />
               <label for="city">City</label>
               <input name="city" required />
               <label for="state">State</label>
               <input name="state" required />
-              <label for="zip">Zip</label>
-              <input name="zip" id="zip" required />
+              <label for="phone">Phone</label>
+              <input name="phone" id="phone" pattern="[0-9]+" required />
             </div>
           </fieldset>
           <fieldset>
-            <legend>Payment</legend>
-            <label for="cardNumber">Card number</label>
-            <input name="cardNumber" required />
-            <label for="expiration">Expiration</label>
-            <input name="expiration" required />
-            <label for="code">Security Code</label>
-            <input name="code" required />
+            <legend>Goals</legend>
+            <label for="tWeight">Today Weight</label>
+            <input name="tWeight" id="todayWeight" pattern="^\d{1,3}(?:\.\d{1,2})?$" required/>
+            <label for="intendedWeight" >Intended Weight</label>
+            <input name="intendedWeight" id="intendedWeight" pattern="^\d{1,3}(?:\.\d{1,2})?$" required />
+            <label for="height">Height (m)</label>
+            <input name="height" id="height" pattern="^(?!0{1,3}\.0{1,2}$)\d{1,5}(?:\.\d{1,2})?$" required />
           </fieldset>
           <fieldset class="checkout-summary">
-            <legend>Order Summary</legend>
+            <legend>Plan Summary</legend>
             <ul>
               <li>
                 <label for="cartTotal"
-                  >Item Subtotal(<span id="num-items"></span>)</label
+                  >Total Calories(<span id="num-items"></span>)</label
                 >
                 <p name="cartTotal" id="cartTotal"></p>
               </li>
               <li>
-                <label for="shipping">Shipping Estimate</label>
+                <label for="shipping">Today Body Mass Index</label>
                 <p id="shipping"></p>
               </li>
               <li>
-                <label for="tax">Tax</label>
+                <label for="tax">Intended Body Mass Index</label>
                 <p id="tax"></p>
               </li>
               <li>
-                <label for="orderTotal"><b>Order Total</b></label>
+                <label for="orderTotal"><b>Rate </b></label>
                 <p id="orderTotal"></p>
               </li>
             </ul>

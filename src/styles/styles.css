@@ -98,6 +98,12 @@ button:hover {
   font-size: 120%;
   box-shadow: 5px 10px 15px #a4b8c4;
 }
+
+button:active {
+
+  background: brown;
+
+}
 .divider {
   border-bottom: 2px solid var(--primary-color);
 }
@@ -328,4 +334,74 @@ button:hover {
     width: 25%;
     font-size: 1em;
   }
+}
+
+form fieldset {
+
+  margin : -.5rem 1rem 1rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 10px;
+  padding: .5rem 2%;
+  
+}
+
+form legend {
+  
+  margin: 0 1rem;
+  padding: 0;
+}
+
+form label {
+  display: block;
+  padding: .1rem;
+  margin: .5rem;
+  font-weight: bold;
+}
+
+form input {
+  display:block;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: .5rem;
+  width: 100%;
+}
+
+form div {
+
+  display: block;
+  margin-left: .7rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  
+}
+
+
+ input:required{
+  border-left: red solid 6px;
+}
+
+input:required:valid {
+  border-left: green solid 6px;
+}
+
+input:focus {
+  background: lightgrey;
+}
+
+
+.error {
+  width: 100%;
+  padding: 0;
+
+  font-size: 80%;
+  color: white;
+  background-color: #900;
+  border-radius: 0 0 5px 5px;
+
+  box-sizing: border-box;
+}
+
+.error.active {
+  padding: 0.3em;
 }

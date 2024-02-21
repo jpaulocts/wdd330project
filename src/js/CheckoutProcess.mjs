@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage, alertMessage, removeAllAlerts } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, alertMessage, removeAllAlerts, bmi } from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 
 
@@ -19,10 +19,10 @@ function packageItems(items) {
   const simplifiedItems = items.map((item) => {
     console.log(item);
     return {
-      id: item.Id,
-      price: item.FinalPrice,
-      name: item.Name,
-      quantity: 1,
+      id: item.recipe.label,
+      label: item.recipe.calories,
+      type: item.recipe.mealType,
+      dish: item.recipe.dishType,
     };
   });
   return simplifiedItems;
@@ -51,13 +51,14 @@ export default class CheckoutProcess {
 
       const itemsTotal = document.querySelector(this.outputSelector + " #num-items");
       const valueTotal = document.querySelector(this.outputSelector + " #cartTotal");
-      
 
-      itemsTotal.textContent= (this.list.length);
+      itemsTotal.textContent= `${(this.list.length)} ${this.list.length>1 ? "recipes" : "recipe"}`;
 
-      const priceList  = this.list.map((item) => item.FinalPrice);
+      const priceList  = this.list.map((item) => item.recipe.calories);
       this.itemTotal = priceList.reduce((sum, item)=> sum + item);
-      valueTotal.textContent = "$" + this.itemTotal;
+
+
+      valueTotal.textContent = this.itemTotal.toFixed(0) + " kcal";
 
 
   
@@ -65,13 +66,9 @@ export default class CheckoutProcess {
   
     calculateOrdertotal() {
       // calculate the shipping and tax amounts. Then use them to along with the cart total to figure out the order total
-      this.shipping = 10 + (this.list.length - 1) * 2;
-      this.tax = (this.itemTotal * 0.06).toFixed(2);
-      this.orderTotal = (
-        parseFloat(this.itemTotal) +
-        parseFloat(this.shipping) +
-        parseFloat(this.tax)
-      ).toFixed(2);
+      this.shipping = bmi(parseFloat(document.querySelector("#todayWeight").value), parseFloat(document.querySelector("#height").value));
+      this.tax = bmi(parseFloat(document.querySelector("#intendedWeight").value), parseFloat(document.querySelector("#height").value));
+      this.orderTotal = this.shipping - this.tax
      
       // display the totals.
       this.displayOrderTotals();
@@ -79,13 +76,13 @@ export default class CheckoutProcess {
   
     displayOrderTotals() {
       // once the totals are all calculated display them in the order summary page
-      const shipping = document.querySelector(this.outputSelector +" #shipping");
-      const tax = document.querySelector(this.outputSelector + " #tax");
-      const order = document.querySelector(this.outputSelector + " #orderTotal");
+      const bmiToday = document.querySelector(this.outputSelector +" #shipping");
+      const bmiInteded = document.querySelector(this.outputSelector + " #tax");
+      const rate = document.querySelector(this.outputSelector + " #orderTotal");
 
-      shipping.innerText = "$" + this.shipping;
-      tax.innerText = "$" + this.tax;
-      order.innerText = "$" + this.orderTotal;
+      bmiToday.innerText = this.shipping.toFixed(2);
+      bmiInteded.innerText = this.tax.toFixed(2);
+      rate.innerText = this.orderTotal.toFixed(2) + " Kg/m²";
     }
 
     async checkout() {
@@ -98,18 +95,7 @@ export default class CheckoutProcess {
       json.tax = this.tax;
       json.shipping = this.shipping;
       json.items = packageItems(this.list);
-      console.log(json);
-      try {
-        const res = await services.checkout(json);
-        console.log(res);
-        setLocalStorage("so-cart", []);
-        location.assign("/checkout/success.html");
-      } catch (err) {
-        removeAllAlerts();
-        for (let message in err.message) {
-          alertMessage(err.message[message]);
-        }
-      }
+      console.log(json); 
     }
 
   }
