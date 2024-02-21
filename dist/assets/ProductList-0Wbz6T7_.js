@@ -1,4 +1,4 @@
-import{r as l}from"./utils-CbGXeFri.js";function c(e){return`<li class="product-card">
+import{r as l}from"./utils-BBpt8VOu.js";function c(e){return`<li class="product-card">
     <a href="/recipe_page/index.html?recipe=${d(e)}">
       <img src="${e.recipe.image}" alt="Image of ${e.recipe.label}">
       <h2 class="card__name">${e.recipe.label}</h2>

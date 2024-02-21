@@ -217,6 +217,12 @@ button:active {
   text-decoration: none;
   color: var(--dark-grey);
 }
+
+.product-card:hover {
+
+  font-size: 130%;
+  background: lightgray;
+}
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;

@@ -1,4 +1,4 @@
-import{g as i,t as l,l as p}from"./utils-CbGXeFri.js";import{i as d}from"./ProductList-DqMeeIaQ.js";function m(r){const e=d(r);return`<li class="cart-card divider">
+import{g as i,t as l,l as p}from"./utils-BBpt8VOu.js";import{i as d}from"./ProductList-0Wbz6T7_.js";function m(r){const e=d(r);return`<li class="cart-card divider">
   <a href="/recipe_page/index.html?recipe=${e}" class="cart-card__image">
     <img
       src="${r.recipe.image}"
